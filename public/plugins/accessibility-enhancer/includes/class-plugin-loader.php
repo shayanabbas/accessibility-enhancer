@@ -9,6 +9,7 @@ class Plugin_Loader {
     private function load_dependencies() {
         require_once plugin_dir_path(__FILE__) . 'class-rest-api.php';
         require_once plugin_dir_path(__FILE__) . 'class-toolbar.php';
+        require_once plugin_dir_path(__FILE__) . 'class-reports.php';
         require_once plugin_dir_path(__FILE__) . 'wcag-checker.php';
     }
 
