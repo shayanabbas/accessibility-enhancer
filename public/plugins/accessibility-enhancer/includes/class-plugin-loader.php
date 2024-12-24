@@ -8,6 +8,8 @@ class Plugin_Loader {
 
     private function load_dependencies() {
         require_once plugin_dir_path(__FILE__) . 'class-rest-api.php';
+        require_once plugin_dir_path(__FILE__) . 'class-toolbar.php';
+        require_once plugin_dir_path(__FILE__) . 'wcag-checker.php';
     }
 
     private function register_hooks() {
@@ -16,7 +18,8 @@ class Plugin_Loader {
     }
 
     public function enqueue_scripts() {
-        
+        wp_enqueue_script('accessibility-toolbar', plugin_dir_url(__FILE__) . '../assets/js/toolbar.js', ['wp-element'], '1.0', true);
+        wp_enqueue_style('accessibility-toolbar', plugin_dir_url(__FILE__) . '../assets/css/style.css', [], '1.0');
     }
 
     public function add_admin_menu() {
