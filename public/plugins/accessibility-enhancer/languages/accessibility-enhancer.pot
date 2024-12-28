@@ -1,0 +1,43 @@
+# Copyright (C) 2024 Shayan Abbas
+# This file is distributed under the same license as the Accessibility Enhancer plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Accessibility Enhancer 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/accessibility-enhancer\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-12-27T21:18:55-08:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: accessibility-enhancer\n"
+
+#. Plugin Name of the plugin
+#: accessibility-enhancer.php
+#: includes/class-plugin-loader.php:107
+msgid "Accessibility Enhancer"
+msgstr ""
+
+#. Description of the plugin
+#: accessibility-enhancer.php
+msgid "A plugin to enhance accessibility features on your WordPress site."
+msgstr ""
+
+#. Author of the plugin
+#: accessibility-enhancer.php
+msgid "Shayan Abbas"
+msgstr ""
+
+#: accessibility-enhancer.php:24
+msgid "Composer autoload not found. Please install dependencies using Composer."
+msgstr ""
+
+#: includes/class-plugin-loader.php:108
+msgid "Accessibility"
+msgstr ""
+
+#: includes/class-plugin-loader.php:123
+msgid "Accessibility Report"
+msgstr ""
