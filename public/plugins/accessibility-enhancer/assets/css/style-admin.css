@@ -1,0 +1,88 @@
+/* General Styles */
+.report-generator {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .report-generator h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .report-generator .error {
+    color: red;
+    text-align: center;
+  }
+  
+  .report-generator p {
+    text-align: center;
+  }
+  
+  /* Filter Dropdown */
+  .report-generator .filter-container {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .report-generator label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .report-generator select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Report List */
+  .report-generator ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .report-generator li {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  /* Post Title and Status */
+  .report-generator .post-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .report-generator .status {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .report-generator .status.fixed {
+    color: green;
+  }
+  
+  .report-generator .status.issues {
+    color: red;
+  }
+  
+  /* Issues List */
+  .report-generator .issues-list {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  
+  .report-generator .issues-list li {
+    margin-bottom: 5px;
+  }
+  
+  /* No Issues Text */
+  .report-generator .no-issues {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+  }
+  

@@ -69,7 +69,7 @@ class Plugin_Loader {
 
 		wp_enqueue_style(
 			'accessibility-admin-style',
-			plugin_dir_url( __FILE__ ) . '../assets/css/style.css',
+			plugin_dir_url( __FILE__ ) . '../assets/css/style-admin.css',
 			array(),
 			'1.0'
 		);
