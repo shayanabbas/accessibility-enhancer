@@ -95,6 +95,7 @@ class Plugin_Loader {
 			array(),
 			'1.0'
 		);
+		wp_enqueue_style( 'dashicons' );
 	}
 
 	/**

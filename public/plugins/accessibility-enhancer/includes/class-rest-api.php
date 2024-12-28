@@ -82,10 +82,12 @@ class Rest_API {
 		$meta_results = array();
 		while ( $query->have_posts() ) {
 			$query->the_post();
+			$issues         = get_post_meta( get_the_ID(), '_accessibility_issues', true );
 			$meta_results[] = array(
 				'post_id'    => get_the_ID(),
 				'post_title' => get_the_title(),
-				'issues'     => get_post_meta( get_the_ID(), '_accessibility_issues', true ),
+				'status'     => empty( $issues ) ? 'Fixed' : 'Issues Found',
+				'issues'     => $issues,
 			);
 		}
 		wp_reset_postdata();

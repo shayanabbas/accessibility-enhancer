@@ -11,17 +11,49 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 9999;
     font-family: Arial, sans-serif;
-}
-
-/* Toolbar Header */
-.toolbar h3 {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .toolbar.collapsed {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 50%;
+  }
+  
+  /* Toggle Button */
+  .toggle-button {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    top: -16px;
+    left: -16px;
+  }
+  
+  .toggle-button:hover {
+    background: #555;
+  }
+  .toolbar.collapsed .toggle-button {
+    position: sticky;
+    width: 50px;
+    height: 50px;
+  }
+  /* Toolbar Header */
+  .toolbar h3 {
     font-size: 16px;
     margin-bottom: 10px;
     color: #333;
-}
-
-/* Buttons */
-button {
+  }
+  
+  /* Buttons */
+  button {
     margin-right: 5px;
     margin-bottom: 10px;
     padding: 5px 10px;
@@ -31,62 +63,69 @@ button {
     border-radius: 3px;
     background-color: #f9f9f9;
     color: #333;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background-color: #ddd;
-}
-
-/* Reports Section */
-.reports {
+  }
+  
+  /* Reports Section */
+  .reports {
     margin-top: 15px;
     font-size: 14px;
-}
-
-.reports h4 {
+  }
+  
+  .reports h4 {
     font-size: 15px;
     margin-bottom: 10px;
     color: #444;
-}
-
-.reports p {
-    color: #444;
-}
-
-.reports ul {
+  }
+  
+  .reports ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-.reports li {
+  }
+  
+  .reports li {
     margin-bottom: 8px;
     line-height: 1.4;
     color: #555;
-}
-
-.reports li strong {
+  }
+  
+  .reports li strong {
     color: #333;
-}
-
-/* Error and Loading States */
-.error {
+  }
+  
+  .status.fixed {
+    color: green;
+    margin-left: 10px;
+  }
+  
+  .status.issues {
+    color: red;
+    margin-left: 10px;
+  }
+  
+  /* Error and Loading States */
+  .error {
     color: #d9534f;
     font-weight: bold;
-}
-
-.loading {
+  }
+  
+  .loading {
     color: #5bc0de;
     font-style: italic;
-}
-
-/* Contrast Modes */
-body.high-contrast {
+  }
+  
+  /* Contrast Modes */
+  body.high-contrast {
     background-color: #000;
     color: #fff;
-}
-
-body.sepia {
+  }
+  
+  body.sepia {
     background-color: #f4ecd8;
     color: #5b4636;
-}
+  }
+  
