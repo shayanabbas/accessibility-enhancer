@@ -45,11 +45,6 @@ class Reports {
 		$content = get_post_field( 'post_content', $post_id );
 		$issues  = self::generate_report( $content );
 
-		// Extract inline styles for color contrast checks.
-		$css_rules       = self::extract_inline_styles( $content );
-		$contrast_issues = WCAG_Checker::check_color_contrast( $css_rules );
-		$issues          = array_merge( $issues, $contrast_issues );
-
 		// Save the issues as post meta.
 		update_post_meta( $post_id, '_accessibility_issues', $issues );
 
@@ -63,19 +58,43 @@ class Reports {
 	 * @return array An array of CSS rules extracted from inline styles.
 	 */
 	private static function extract_inline_styles( $content ) {
-		$css_rules = array();
-		preg_match_all( '/style=["\'](.*?)["\']/', $content, $matches, PREG_SET_ORDER );
+		$css_rules     = array();
+		$element_count = array(); // Track occurrences of each element type.
+
+		preg_match_all( '/<([a-z]+)([^>]*)style=["\'](.*?)["\']/i', $content, $matches, PREG_SET_ORDER );
 
 		foreach ( $matches as $match ) {
-			$styles   = explode( ';', $match[1] );
+			$tag        = $match[1]; // The HTML tag (e.g., div, span).
+			$attributes = $match[2]; // Additional attributes of the element.
+			$styles     = explode( ';', $match[3] );
+
+			// Extract class and ID from attributes.
+			preg_match( '/class=["\'](.*?)["\']/', $attributes, $class_match );
+			preg_match( '/id=["\'](.*?)["\']/', $attributes, $id_match );
+
+			$class = isset( $class_match[1] ) ? '.' . str_replace( ' ', '.', $class_match[1] ) : '';
+			$id    = isset( $id_match[1] ) ? '#' . $id_match[1] : '';
+
+			// Initialize or increment the count for this tag.
+			if ( ! isset( $element_count[ $tag ] ) ) {
+				$element_count[ $tag ] = 1;
+			} else {
+				++$element_count[ $tag ];
+			}
+
+			// Add a numeric postfix to distinguish duplicates.
+			$postfix  = $element_count[ $tag ];
+			$selector = "{$tag}{$id}{$class}:nth-of-type({$postfix})";
+
 			$rule_set = array();
 			foreach ( $styles as $style ) {
 				if ( strpos( $style, ':' ) !== false ) {
-					list($property, $value)        = explode( ':', $style );
+					list( $property, $value )      = explode( ':', $style );
 					$rule_set[ trim( $property ) ] = trim( $value );
 				}
 			}
-			$css_rules[] = $rule_set;
+
+			$css_rules[ $selector ] = $rule_set;
 		}
 
 		return $css_rules;
