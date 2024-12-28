@@ -4,6 +4,9 @@
  * Description: A plugin to enhance accessibility features on your WordPress site.
  * Version: 1.0
  * Author: Shayan Abbas
+ * Author URI: https://www.linkedin.com/in/shayanabbas/
+ * License: GPL v3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: accessibility-enhancer
  * Domain Path: /languages
  *

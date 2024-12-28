@@ -61,7 +61,7 @@ class Plugin_Loader {
 
 		wp_enqueue_script(
 			'accessibility-admin-script',
-			plugin_dir_url( __FILE__ ) . '../assets/js/toolbar.js',
+			plugin_dir_url( __FILE__ ) . '../dist/js/toolbar.js',
 			array( 'wp-element' ), // React dependency.
 			'1.0',
 			true
@@ -69,7 +69,7 @@ class Plugin_Loader {
 
 		wp_enqueue_style(
 			'accessibility-admin-style',
-			plugin_dir_url( __FILE__ ) . '../assets/css/style-admin.css',
+			plugin_dir_url( __FILE__ ) . '../dist/css/style-admin.css',
 			array(),
 			'1.0'
 		);
@@ -83,7 +83,7 @@ class Plugin_Loader {
 	public function enqueue_scripts() {
 		wp_enqueue_script(
 			'accessibility-toolbar',
-			plugin_dir_url( __FILE__ ) . '../assets/js/toolbar.js',
+			plugin_dir_url( __FILE__ ) . '../dist/js/toolbar.js',
 			array( 'wp-element' ),
 			'1.0',
 			true
@@ -91,7 +91,7 @@ class Plugin_Loader {
 
 		wp_enqueue_style(
 			'accessibility-toolbar',
-			plugin_dir_url( __FILE__ ) . '../assets/css/style.css',
+			plugin_dir_url( __FILE__ ) . '../dist/css/style.css',
 			array(),
 			'1.0'
 		);

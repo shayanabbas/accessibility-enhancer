@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/App.js',
   output: {
-    path: path.resolve(__dirname, 'assets/js'),
+    path: path.resolve(__dirname, 'dist/js'),
     filename: 'toolbar.js'
   },
   module: {
@@ -22,7 +22,7 @@ module.exports = {
   },
   devServer: {
     static: {
-        directory: path.join(__dirname, 'assets/js'),
+        directory: path.join(__dirname, 'dist/js'),
     },
     compress: true,
     port: 3000,
