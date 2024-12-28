@@ -44,7 +44,7 @@ class Plugin_Loader {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
-		add_action( 'add_meta_box', array( $this, 'add_admin_meta_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_admin_meta_box' ) );
 	}
 
 	/**
@@ -123,7 +123,7 @@ class Plugin_Loader {
 			'accessibility_report',
 			__( 'Accessibility Report', 'accessibility-enhancer' ),
 			array( $this, 'render_accessibility_report_box' ),
-			array( 'post', 'page' ), // Post types where the button appears.
+			array( 'post', 'page' ),
 			'side',
 			'high'
 		);
@@ -136,5 +136,14 @@ class Plugin_Loader {
 	 */
 	public function render_admin_page() {
 		include plugin_dir_path( __FILE__ ) . '../templates/admin-dashboard.php';
+	}
+
+	/**
+	 * Renders the accessibility report meta box.
+	 *
+	 * @return void
+	 */
+	public function render_accessibility_report_box() {
+		include plugin_dir_path( __FILE__ ) . '../templates/admin-generate-button-report.php';
 	}
 }

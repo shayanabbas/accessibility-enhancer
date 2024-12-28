@@ -34,12 +34,18 @@ class Rest_API {
 			'accessibility/v1',
 			'/reports',
 			array(
-				'methods'  => 'GET',
-				'callback' => array( $this, 'get_reports' ),
-				'args'     => array(
-					'slug' => array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'get_reports' ),
+				'permission_callback' => '__return_true',
+				'args'                => array(
+					'slug'    => array(
 						'description' => 'The slug of the post to fetch the report for.',
 						'type'        => 'string',
+						'required'    => false,
+					),
+					'post_id' => array(
+						'description' => 'The ID of the post to fetch the report for.',
+						'type'        => 'integer',
 						'required'    => false,
 					),
 				),
@@ -56,7 +62,8 @@ class Rest_API {
 	 * @return WP_REST_Response The REST API response containing the reports data.
 	 */
 	public function get_reports( $request ) {
-		$slug = $request->get_param( 'slug' );
+		$slug    = $request->get_param( 'slug' );
+		$post_id = $request->get_param( 'post_id' );
 
 		// Build the arguments for WP_Query.
 		$query_args = array(
@@ -73,6 +80,14 @@ class Rest_API {
 		// If a slug is provided, add it to the query arguments.
 		if ( $slug ) {
 			$query_args['name'] = $slug;
+		}
+
+		// If a post_id is provided, override other filters for specificity.
+		if ( $post_id ) {
+			$query_args = array(
+				'post_type' => array( 'post', 'page' ),
+				'p'         => $post_id, // Query by post ID.
+			);
 		}
 
 		// Perform the query.
@@ -93,7 +108,7 @@ class Rest_API {
 		wp_reset_postdata();
 
 		// Cache the results using transient cache.
-		$cache_key = 'accessibility_reports_' . ( $slug ? $slug : 'all' );
+		$cache_key = 'accessibility_reports_' . ( $post_id ? 'post_' . $post_id : ( $slug ? $slug : 'all' ) );
 		set_transient( $cache_key, $meta_results, 12 * HOUR_IN_SECONDS );
 
 		return new WP_REST_Response( array( 'data' => $meta_results ), 200 );
