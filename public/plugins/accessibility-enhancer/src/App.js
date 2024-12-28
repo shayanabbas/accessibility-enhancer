@@ -1,5 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import ReportGenerator from './components/ReportGenerator';
 
-ReactDOM.render(<ReportGenerator />, document.getElementById('accessibility-admin-dashboard'));
+// Render Report Generator in admin
+const adminDashboardContainer = document.getElementById(
+  'accessibility-admin-dashboard'
+);
+if (adminDashboardContainer) {
+  const adminDashboardRoot = createRoot(adminDashboardContainer);
+  adminDashboardRoot.render(<ReportGenerator />);
+}
