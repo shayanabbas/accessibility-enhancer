@@ -126,6 +126,16 @@ The Accessibility Enhancer is a WordPress plugin designed to improve website acc
 
 ---
 
+## Release
+
+- **Build Release**
+  Run the provided `release.sh` file that will build a release in `./build` folder.
+  ```bash
+  ./release.sh
+  ```
+
+---
+
 ## Contribution
 
 - Fork the repository.
