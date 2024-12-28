@@ -68,7 +68,7 @@ class Rest_API {
 		// Build the arguments for WP_Query.
 		$query_args = array(
 			'post_type'      => array( 'post', 'page' ),
-			'meta_query'     => array(
+			'meta_query'     => array( // phpcs:ignore
 				array(
 					'key'     => '_accessibility_issues',
 					'compare' => 'EXISTS',
