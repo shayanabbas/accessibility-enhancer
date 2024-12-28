@@ -22,9 +22,21 @@ module.exports = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'assets/js')
+        directory: path.join(__dirname, 'assets/js'),
     },
     compress: true,
-    port: 3000
+    port: 3000,
+    hot: true,
+    devMiddleware: {
+        writeToDisk: true, 
+    },
+    allowedHosts: 'all',
+    client: {
+        webSocketURL: {
+            hostname: 'localhost', 
+            port: 3000, 
+            protocol: 'ws', 
+        },
+    },
   }
 };

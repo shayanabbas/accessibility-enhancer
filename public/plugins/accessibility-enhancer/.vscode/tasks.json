@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Lint JavaScript",
+      "type": "npm",
+      "script": "lint",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint PHP",
+      "type": "shell",
+      "command": "./vendor/bin/phpcs",
+      "args": ["--standard=WordPress", "."],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Fix PHP",
+      "type": "shell",
+      "command": "./vendor/bin/phpcbf",
+      "args": ["--standard=WordPress", "."],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
+  

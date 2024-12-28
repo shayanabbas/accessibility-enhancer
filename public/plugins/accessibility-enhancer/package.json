@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "watch": "webpack --watch --mode development",
+    "lint": "composer phpcs && npm run lint:js",
+    "lint:fix": "composer phpcbf && npm run lint:js:fix",
+    "lint:js": "eslint ./src",
+    "lint:js:fix": "eslint ./src --fix"
   },
   "keywords": [
     "wordpress",
@@ -25,6 +30,11 @@
     "@babel/preset-react": "^7.26.3",
     "@wordpress/scripts": "^30.7.0",
     "babel-loader": "^9.2.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.3",
+    "prettier": "^3.4.2",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"

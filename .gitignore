@@ -3,3 +3,5 @@ wordpress/
 !.ddev/config.yaml
 !.ddev/docker-compose.override.yaml
 node_modules
+vendor
+.vs_code/*

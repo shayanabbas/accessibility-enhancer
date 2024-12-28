@@ -1,0 +1,29 @@
+{
+    "editor.formatOnSave": true,
+    "editor.detectIndentation": true,
+    "files.autoSave": "onFocusChange",
+    "files.associations": {
+      "*.js": "javascriptreact",
+      "*.jsx": "javascriptreact",
+      "*.php": "php"
+    },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact"
+    ],
+    "phpcs.enable": true,
+    "phpcs.standard": "WordPress",
+    "phpcs.executablePath": "./vendor/bin/phpcs",
+    "prettier.requireConfig": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[php]": {
+      "editor.defaultFormatter": "sublimehq.phptools",
+      "editor.formatOnSave": true
+    }
+}
+  
