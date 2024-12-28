@@ -157,7 +157,9 @@ const Toolbar = () => {
                             <span>{issue.selector}</span>
                           ) : (
                             <span
-                              dangerouslySetInnerHTML={{ __html: issue.html }}
+                              dangerouslySetInnerHTML={{
+                                __html: issue.html || issue.role,
+                              }}
                             />
                           )}
                         </li>
