@@ -157,5 +157,5 @@ This project is licensed under the **GPL-3.0** license.
 
 ---
 
-For any issues or feature requests, please [open an issue](https://github.com/shayanabbas/issues).
+For any issues or feature requests, please [open an issue](https://github.com/shayanabbas/accessibility-enhancer/issues).
 
