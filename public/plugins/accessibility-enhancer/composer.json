@@ -21,7 +21,7 @@
         }
     },
     "scripts": {
-        "phpcs": "vendor/bin/phpcs --extensions=php includes accessibility-enhancer.php",
-        "phpcbf": "vendor/bin/phpcbf --extensions=php includes accessibility-enhancer.php"
+        "phpcs": "vendor/bin/phpcs --extensions=php . --ignore=\"node_modules,vendor\"",
+        "phpcbf": "vendor/bin/phpcbf --extensions=php . --ignore=\"node_modules,vendor\""
     }
 }

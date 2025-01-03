@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Accessibility Enhancer
  * Description: A plugin to enhance accessibility features on your WordPress site.
- * Version: 1.0
+ * Version: 1.0.0
  * Author: Shayan Abbas
  * Author URI: https://www.linkedin.com/in/shayanabbas/
  * License: GPL v3

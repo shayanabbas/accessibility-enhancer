@@ -1,15 +1,15 @@
 === Accessibility Enhancer ===
 Contributors: shayanabbas
 Donate link: https://github.com/shayanabbas/accessibility-enhancer
-Tags: accessibility, WCAG, ADA, toolbar, reports, aria, accessibility enhancer,
+Tags: accessibility, WCAG, ADA, accessibility reports, accessibility enhancer,
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 8.3
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Accessibility Enhancer is a WordPress plugin that helps improve website accessibility by providing a dynamic toolbar, automated reports, and tools to address accessibility issues. Built to comply with WCAG standards, it ensures your site meets global accessibility guidelines.
+The Accessibility Enhancer plugin is designed to improve your WordPress website's accessibility and ensure compliance with WCAG standards.
 
 == Description ==
 
