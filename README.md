@@ -4,6 +4,8 @@
 
 The Accessibility Enhancer is a WordPress plugin designed to improve website accessibility. It provides features such as a dynamic toolbar for text adjustments and contrast changes, automated accessibility reports for site admins, and front-end tools to identify and address accessibility issues. This plugin is built to adhere to WCAG standards, ensuring your website meets global accessibility guidelines.
 
+[![Preview WP Plugin](https://img.shields.io/badge/Preview-plugin-blue?style=for-the-badge&logo=wordpress)](https://playground.wordpress.net/#ewoiJHNjaGVtYSI6ICJodHRwczovL3BsYXlncm91bmQud29yZHByZXNzLm5ldC9ibHVlcHJpbnQtc2NoZW1hLmpzb24iLAoibG9naW4iOiB0cnVlLAoic2l0ZU9wdGlvbnMiOiB7CiJibG9nbmFtZSI6ICJBY2Nlc3NpYmlsaXR5IEVuaGFuY2VyIgp9LAoicGx1Z2lucyI6IFsKImh0dHBzOi8vZ2l0aHViLmNvbS9zaGF5YW5hYmJhcy9hY2Nlc3NpYmlsaXR5LWVuaGFuY2VyL3JlbGVhc2VzL2Rvd25sb2FkL3YxLjAuMC9hY2Nlc3NpYmlsaXR5LWVuaGFuY2VyLnppcCIKXSwKInN0ZXBzIjogWwp7CiJzdGVwIjogImltcG9ydFd4ciIsCiJmaWxlIjogewoicmVzb3VyY2UiOiAidXJsIiwKInVybCI6ICJodHRwczovL2dpc3QuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NoYXlhbmFiYmFzLzI5NTg4MTUxMzgwNzcyMDgzNmY0ODE0YzMwZTk1NTI1L3Jhdy82ZWJiZDBhNjIxYzc2NDBhNGVmNmUwOWJhMDcxOGE4Y2QzODRhNTNjL2V4cG9ydCUyNTIwY29udGVudCUyNTIwZHVtbXAueG1sIgp9Cn0KXQp9)
+
 ---
 
 ## Features
@@ -155,5 +157,5 @@ This project is licensed under the **GPL-3.0** license.
 
 ---
 
-For any issues or feature requests, please [open an issue](https://github.com/shayanabbas/issues).
+For any issues or feature requests, please [open an issue](https://github.com/shayanabbas/accessibility-enhancer/issues).
 
