@@ -7,12 +7,16 @@
  * @package AccessibilityEnhancer
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
- * Class Reports
+ * Class AEnhancer_Reports
  *
  * Manages accessibility reports for WordPress content.
  */
-class Reports {
+class AEnhancer_Reports {
 	/**
 	 * Generates an accessibility report for the provided content.
 	 *
@@ -21,15 +25,15 @@ class Reports {
 	 */
 	public static function generate_report( $content ) {
 		$issues = array();
-		$issues = array_merge( $issues, WCAG_Checker::check_missing_alt_tags( $content ) );
-		$issues = array_merge( $issues, WCAG_Checker::check_heading_structure( $content ) );
-		$issues = array_merge( $issues, WCAG_Checker::check_aria_roles( $content ) );
+		$issues = array_merge( $issues, AEnhancer_WCAG_Checker::check_missing_alt_tags( $content ) );
+		$issues = array_merge( $issues, AEnhancer_WCAG_Checker::check_heading_structure( $content ) );
+		$issues = array_merge( $issues, AEnhancer_WCAG_Checker::check_aria_roles( $content ) );
 
 		// Extract CSS rules from content.
 		$css_rules = self::extract_inline_styles( $content );
 
 		// Add color contrast issues.
-		$contrast_issues = WCAG_Checker::check_color_contrast( $css_rules );
+		$contrast_issues = AEnhancer_WCAG_Checker::check_color_contrast( $css_rules );
 		$issues          = array_merge( $issues, $contrast_issues );
 
 		return $issues;
@@ -118,6 +122,6 @@ add_action(
 		}
 
 		// Generate and save the report.
-		Reports::save_report( $post_id );
+		AEnhancer_Reports::save_report( $post_id );
 	}
 );

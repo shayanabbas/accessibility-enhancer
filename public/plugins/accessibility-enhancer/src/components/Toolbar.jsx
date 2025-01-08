@@ -24,7 +24,15 @@ const Toolbar = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `/wp-json/accessibility/v1/reports?slug=${slug}`
+          `/wp-json/accessibility/v1/reports?slug=${slug}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              // eslint-disable-next-line no-undef
+              'X-WP-Nonce': accessibilityEnhancer.nonce, // Include the nonce passed via wp_localize_script
+            },
+          }
         );
         if (response.ok) {
           const data = await response.json();
@@ -33,6 +41,8 @@ const Toolbar = () => {
           } else {
             setReports([]);
           }
+        } else if (response.status === 401) {
+          setError('Unauthorized: You do not have permission to view reports.');
         } else {
           throw new Error(`Failed to fetch reports: ${response.status}`);
         }
@@ -130,46 +140,47 @@ const Toolbar = () => {
               Default Contrast
             </button>
           </div>
-          <div className='reports'>
-            <h4>Accessibility Reports</h4>
-            {loading && <p className='loading'>Loading reports...</p>}
-            {error && <p className='error'>{error}</p>}
-            {!loading && !error && reports.length === 0 && (
-              <p>No accessibility issues found for this page.</p>
-            )}
-            {!loading && !error && reports.length > 0 && (
-              <ul>
-                {reports.map((report) => (
-                  <li key={report.post_id}>
-                    <strong>{report.post_title}</strong>
-                    <span
-                      className={`status ${
-                        report.status === 'Fixed' ? 'fixed' : 'issues'
-                      }`}
-                    >
-                      {report.status}
-                    </span>
-                    <ul>
-                      {report.issues.map((issue, index) => (
-                        <li key={index}>
-                          <strong>{issue.issue}:</strong>{' '}
-                          {issue.selector ? (
-                            <span>{issue.selector}</span>
-                          ) : (
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: issue.html || issue.role,
-                              }}
-                            />
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          {!error && (
+            <div className='reports'>
+              <h4>Accessibility Reports</h4>
+              {loading && <p className='loading'>Loading reports...</p>}
+              {!loading && reports.length === 0 && (
+                <p>No accessibility issues found for this page.</p>
+              )}
+              {!loading && reports.length > 0 && (
+                <ul>
+                  {reports.map((report) => (
+                    <li key={report.post_id}>
+                      <strong>{report.post_title}</strong>
+                      <span
+                        className={`status ${
+                          report.status === 'Fixed' ? 'fixed' : 'issues'
+                        }`}
+                      >
+                        {report.status}
+                      </span>
+                      <ul>
+                        {report.issues.map((issue, index) => (
+                          <li key={index}>
+                            <strong>{issue.issue}:</strong>{' '}
+                            {issue.selector ? (
+                              <span>{issue.selector}</span>
+                            ) : (
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: issue.html || issue.role,
+                                }}
+                              />
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </>
       )}
     </div>

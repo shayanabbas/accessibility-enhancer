@@ -12,11 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Accessibility_Toolbar
+ * Class AEnhancer_Accessibility_Toolbar
  *
  * Manages the accessibility toolbar rendering.
  */
-class Accessibility_Toolbar {
+class AEnhancer_Accessibility_Toolbar {
 	/**
 	 * Constructor.
 	 *
@@ -50,4 +50,4 @@ class Accessibility_Toolbar {
 }
 
 // Initialize the toolbar class.
-new Accessibility_Toolbar();
+new AEnhancer_Accessibility_Toolbar();
