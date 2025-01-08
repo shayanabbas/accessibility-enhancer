@@ -1,0 +1,40 @@
+name: WordPress Plugin Checks
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        tools: composer, wp-cli
+
+    - name: Install Composer dependencies
+      run: composer install --working-dir=public/plugins/accessibility-enhancer
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Run release script
+      run: ./release.sh --no-zip
+  
+    - name: Run plugin check
+      uses: wordpress/plugin-check-action@v1.0.6
+      with:
+        build-dir: './build/accessibility-enhancer'
