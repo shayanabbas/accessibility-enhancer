@@ -21,19 +21,19 @@ defined( 'ABSPATH' ) || exit;
  *
  * Loads the required classes and files for the plugin.
  */
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-loader.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-aenhancer-plugin-loader.php';
 
 /**
  * Initializes the Accessibility Enhancer plugin.
  *
- * Creates an instance of the Plugin_Loader class and starts the plugin.
+ * Creates an instance of the AEnhancer_Plugin_Loader class and starts the plugin.
  *
  * @return void
  */
-function accessibility_enhancer_init() {
-	$plugin = new Plugin_Loader();
+function aenhancer_init() {
+	$plugin = new AEnhancer_Plugin_Loader();
 	$plugin->run();
 }
 
 // Hook the initialization function to the 'plugins_loaded' action.
-add_action( 'plugins_loaded', 'accessibility_enhancer_init' );
+add_action( 'plugins_loaded', 'aenhancer_init' );

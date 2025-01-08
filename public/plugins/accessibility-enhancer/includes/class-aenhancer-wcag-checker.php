@@ -7,12 +7,16 @@
  * @package AccessibilityEnhancer
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
- * Class WCAG_Checker
+ * Class AEnhancer_WCAG_Checker
  *
  * Contains methods to analyze WCAG compliance in HTML content.
  */
-class WCAG_Checker {
+class AEnhancer_WCAG_Checker {
 	/**
 	 * Checks for missing alt attributes in images.
 	 *

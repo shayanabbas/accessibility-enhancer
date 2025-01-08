@@ -7,12 +7,16 @@
  * @package AccessibilityEnhancer
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
- * Class Plugin_Loader
+ * Class AEnhancer_Plugin_Loader
  *
  * Manages the initialization and setup of the Accessibility Enhancer plugin.
  */
-class Plugin_Loader {
+class AEnhancer_Plugin_Loader {
 	/**
 	 * Runs the plugin by loading dependencies and registering hooks.
 	 *
@@ -29,10 +33,10 @@ class Plugin_Loader {
 	 * @return void
 	 */
 	private function load_dependencies() {
-		require_once plugin_dir_path( __FILE__ ) . 'class-rest-api.php';
-		require_once plugin_dir_path( __FILE__ ) . 'class-accessibility-toolbar.php';
-		require_once plugin_dir_path( __FILE__ ) . 'class-reports.php';
-		require_once plugin_dir_path( __FILE__ ) . 'class-wcag-checker.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-aenhancer-rest-api.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-aenhancer-accessibility-toolbar.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-aenhancer-reports.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-aenhancer-wcag-checker.php';
 	}
 
 	/**
@@ -67,6 +71,15 @@ class Plugin_Loader {
 			true
 		);
 
+		wp_localize_script(
+			'accessibility-admin-script',
+			'accessibilityEnhancer',
+			array(
+				'restUrl' => esc_url_raw( rest_url( 'accessibility/v1/' ) ),
+				'nonce'   => wp_create_nonce( 'wp_rest' ),
+			)
+		);
+
 		wp_enqueue_style(
 			'accessibility-admin-style',
 			plugin_dir_url( __FILE__ ) . '../dist/css/style-admin.css',
@@ -89,12 +102,22 @@ class Plugin_Loader {
 			true
 		);
 
+		wp_localize_script(
+			'accessibility-toolbar',
+			'accessibilityEnhancer',
+			array(
+				'restUrl' => esc_url_raw( rest_url( 'accessibility/v1/' ) ),
+				'nonce'   => wp_create_nonce( 'wp_rest' ),
+			)
+		);
+
 		wp_enqueue_style(
 			'accessibility-toolbar',
 			plugin_dir_url( __FILE__ ) . '../dist/css/style.css',
 			array(),
 			'1.0'
 		);
+
 		wp_enqueue_style( 'dashicons' );
 	}
 

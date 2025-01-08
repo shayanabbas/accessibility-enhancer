@@ -7,12 +7,16 @@
  * @package AccessibilityEnhancer
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
- * Class Rest_API
+ * Class AEnhancer_Rest_API
  *
  * Manages the custom REST API endpoints for the Accessibility Enhancer plugin.
  */
-class Rest_API {
+class AEnhancer_Rest_API {
 	/**
 	 * Constructor.
 	 *
@@ -36,7 +40,9 @@ class Rest_API {
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'get_reports' ),
-				'permission_callback' => '__return_true',
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
 				'args'                => array(
 					'slug'    => array(
 						'description' => 'The slug of the post to fetch the report for.',
@@ -64,6 +70,16 @@ class Rest_API {
 	public function get_reports( $request ) {
 		$slug    = $request->get_param( 'slug' );
 		$post_id = $request->get_param( 'post_id' );
+
+		// Generate the cache key based on the parameters.
+		$cache_key = 'aenhancer_reports_' . ( $post_id ? 'post_' . $post_id : ( $slug ? $slug : 'all' ) );
+
+		// Check if the result is already cached.
+		$cached_results = get_transient( $cache_key );
+		if ( false !== $cached_results ) {
+			// Return the cached results.
+			return new WP_REST_Response( array( 'data' => $cached_results ), 200 );
+		}
 
 		// Build the arguments for WP_Query.
 		$query_args = array(
@@ -108,7 +124,6 @@ class Rest_API {
 		wp_reset_postdata();
 
 		// Cache the results using transient cache.
-		$cache_key = 'accessibility_reports_' . ( $post_id ? 'post_' . $post_id : ( $slug ? $slug : 'all' ) );
 		set_transient( $cache_key, $meta_results, 12 * HOUR_IN_SECONDS );
 
 		return new WP_REST_Response( array( 'data' => $meta_results ), 200 );
@@ -116,4 +131,4 @@ class Rest_API {
 }
 
 // Initialize the REST API class.
-new Rest_API();
+new AEnhancer_Rest_API();

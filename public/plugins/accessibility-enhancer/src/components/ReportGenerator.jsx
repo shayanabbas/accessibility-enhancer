@@ -10,7 +10,15 @@ const ReportGenerator = () => {
     const fetchReports = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/wp-json/accessibility/v1/reports');
+        const response = await fetch('/wp-json/accessibility/v1/reports', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // eslint-disable-next-line no-undef
+            'X-WP-Nonce': accessibilityEnhancer.nonce, // Include the nonce passed via wp_localize_script
+          },
+        });
+
         if (response.ok) {
           const data = await response.json();
           if (data && Array.isArray(data.data)) {

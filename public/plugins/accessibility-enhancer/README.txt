@@ -1,10 +1,8 @@
 === Accessibility Enhancer ===
-Contributors: shayanabbas
+Contributors: ministryofcoders
 Donate link: https://github.com/shayanabbas/accessibility-enhancer
 Tags: accessibility, WCAG, ADA, accessibility reports, accessibility enhancer,
-Requires at least: 5.0
 Tested up to: 6.7
-Requires PHP: 8.3
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
