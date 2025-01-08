@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Default parameter values
+NO_ZIP=false
+
+# Parse command-line arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --no-zip) NO_ZIP=true ;;  # Skip zipping if this flag is passed
+        *) echo "Unknown parameter: $1"; exit 1 ;;
+    esac
+    shift
+done
+
 # Define directories
 PLUGIN_DIR="./public/plugins/accessibility-enhancer"
 BUILD_DIR="./build/accessibility-enhancer"
@@ -57,13 +69,15 @@ if [ ! -f "$BUILD_DIR/README.txt" ]; then
   exit 1
 fi
 
-# Zip the plugin
-echo "Creating plugin zip file..."
-cd $BUILD_DIR/..
-zip -r ../accessibility-enhancer.zip accessibility-enhancer >/dev/null
-rm -rf accessibility-enhancer
-mv ../accessibility-enhancer.zip accessibility-enhancer.zip
-cd -
-
-# Final message
-echo "Plugin is ready for release: accessibility-enhancer.zip"
+# Zip the plugin, but skip if --no-zip flag is set
+if [ "$NO_ZIP" = false ]; then
+    echo "Creating plugin zip file..."
+    cd $BUILD_DIR/..
+    zip -r ../accessibility-enhancer.zip accessibility-enhancer >/dev/null
+    rm -rf accessibility-enhancer
+    mv ../accessibility-enhancer.zip accessibility-enhancer.zip
+    cd -
+    echo "Plugin is ready for release: accessibility-enhancer.zip"
+else
+    echo "Skipping zipping as per the --no-zip parameter."
+fi

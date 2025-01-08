@@ -134,6 +134,8 @@ The Accessibility Enhancer is a WordPress plugin designed to improve website acc
   Run the provided `release.sh` file that will build a release in `./build` folder.
   ```bash
   ./release.sh
+  # use `--no-zip` for not creating a zip file
+  ./release.sh --no-zip
   ```
 
 ---
